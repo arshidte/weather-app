@@ -2,13 +2,10 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import RealtimeWeather from "./Components/RealtimeWeather";
 
-// interface GeoLocation {
-//   latitude: number;
-//   longitude: number;
-// }
-
 function App() {
   const [location, setLocation] = useState("");
+
+  const [selectService, setSelectService] = useState("realtime");
 
   // Get geoLocation
   const [geoLocation, setGeoLocation] = useState({
@@ -43,12 +40,18 @@ function App() {
     fetchGeoLocation();
   }, []);
 
-  // Function to fetch geolocation
+  const handleRealtimeBtn = () => {
+    setSelectService("realtime");
+  };
+
+  const handleForecastBtn = () => {
+    setSelectService("forecast");
+  };
 
   return (
     <>
       <div className="bg-gray-900 h-screen w-screen flex justify-center items-center">
-        <div className="bg-white shadow-md rounded-3xl p-6">
+        <div className="bg-white h-64 shadow-md rounded-3xl p-6">
           {/* Location search */}
           <div>
             <form action="">
@@ -76,13 +79,45 @@ function App() {
           </div>
           {/* Location search */}
 
+          {/* Buttons */}
+          <div className="flex gap-2 my-5">
+            <button
+              className={`p-1 text-white rounded-md text-xs ${
+                selectService == "realtime" ? "bg-slate-700" : "bg-slate-500"
+              }`}
+              onClick={handleRealtimeBtn}
+            >
+              RealTime Weather
+            </button>
+            <button
+              className={`p-1 text-white rounded-md text-xs ${
+                selectService == "forecast" ? "bg-slate-700" : "bg-slate-500"
+              }`}
+              onClick={handleForecastBtn}
+            >
+              Weather Forecast
+            </button>
+          </div>
+          {/* Buttons */}
+
           {/* Realtime weather component */}
-          {geoLocation.latitude !== 0 && geoLocation.longitude !== 0 && (
-            <RealtimeWeather
-              latitude={geoLocation.latitude}
-              longitude={geoLocation.longitude}
-            />
-          )}
+          {selectService == "realtime" &&
+            geoLocation.latitude !== 0 &&
+            geoLocation.longitude !== 0 && (
+              <RealtimeWeather
+                latitude={geoLocation.latitude}
+                longitude={geoLocation.longitude}
+              />
+            )}
+          {selectService == "forecast" &&
+            geoLocation.latitude !== 0 &&
+            geoLocation.longitude !== 0 && (
+              // <RealtimeWeather
+              //   latitude={geoLocation.latitude}
+              //   longitude={geoLocation.longitude}
+              // />
+              <></>
+            )}
           {/* Realtime weather component */}
         </div>
       </div>
