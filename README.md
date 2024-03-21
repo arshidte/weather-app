@@ -9,6 +9,9 @@ Realtime weather component receive geo location(latitude and longitude) and sear
 The datas fetched in component from the API are temperature, humidity, wind direction and wind speed.
 When it comes to daily time range of forecast, average of these are fetched.
 
+APIs are fetched using axios and called in the respective component itself using `useEffect` hook.
+`useState` and `props` passing is used.
+
 Geo location fetched using `navigator.geolocation.getCurrentPosition`
 
 ## Installation
@@ -29,6 +32,9 @@ Geo location fetched using `navigator.geolocation.getCurrentPosition`
 - Data may not fetch sometimes due to API rate limit. In that case change the API key
 
 ## Contact Information
+
 Arshid Diyan TE
+
 Phone: 7012394800
+
 Email: geo.arshid@gmail.com
