@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web application using React provides realtime weather data along with weather forecast based on time range.
+You can fetch data based on geo location or location name.
 
-Currently, two official plugins are available:
+## Coding structure
+`App.tsx` is the entry point of the application. It renders the location input box, buttons to fetch realtime weather and forecast components.
+Realtime weather component receive geo location(latitude and longitude) and search location and forecast weather component receive geo location(latitude and longitude), search location and time range.
+The datas fetched in component from the API are temperature, humidity, wind direction and wind speed.
+When it comes to daily time range of forecast, average of these are fetched.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Geo location fetched using `navigator.geolocation.getCurrentPosition`
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Clone the repository
+- Install packages using `npm install`
+- Run application using `npm run dev`
 
-- Configure the top-level `parserOptions` property like this:
+## Libraries used
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Vite for installation
+- Axios for API calls
+- Tailwind CSS for styling
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Configuration
+
+- Constants.ts has the API key
+- Data may not fetch sometimes due to API rate limit. In that case change the API key
+
+## Contact Information
+Arshid Diyan TE
+Phone: 7012394800
+Email: geo.arshid@gmail.com
